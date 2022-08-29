@@ -2,6 +2,7 @@
   "name": "lukso-rss-reader",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shanejonas.github.io/lukso-reader/",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@erc725/erc725.js": "^0.14.4",
