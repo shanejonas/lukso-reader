@@ -1,4 +1,5 @@
 import sanitizeHtml from 'sanitize-html';
+import he from "he";
 import { IFeed, IItem } from './FeedTypes';
 
 interface IProps {
@@ -8,25 +9,30 @@ interface IProps {
 // an rss react feed component
 const Feed = (props: IProps) => {
   if (!props.feed) {
-    return <div>No Feed Loaded...</div>;
+    return <div className='text-center'>No Feed Loaded...</div>;
   }
   return (
-    <div>
+    <div className="Feed mx-auto">
       <div className="shadow sm:rounded-md sm:overflow-hidden p-6 m-10">
-        <a target="_blank" href={props.feed.channel.link}><h1 className="text-3xl mb-6">{props.feed.channel.title}</h1></a>
+        <a target="_blank" href={props.feed.channel.link}><h1 className="text-3xl mb-6">{he.unescape(props.feed.channel.title)}</h1></a>
         <p className='text-xs'>{props.feed.channel.description}</p>
       </div>
-      <ul className="list-none max-w-7xl mx-auto">
+      <ul className="list-none mx-auto">
         {props.feed.channel.item.map((item: IItem) => (
-          <li key={item.link} className="justify-between items-center border-b-2 border-gray-100  px-4 sm:px-6 pt-6 pb-6">
+          <li key={item.link} className="justify-between items-center border-b-2 border-gray-100  px-4 sm:px-6 pt-6 pb-6 mx-auto">
             <div >
-              <a target="_blank" href={item.link}><h3 className="text-2xl pb-6">{item.title}</h3></a>
+              <a target="_blank" href={item.link}><h3 className="text-2xl">{he.unescape(item.title)}</h3></a>
+            </div>
+            <div className="text-base">
+              {new Date(item.pubDate).toLocaleDateString()}
             </div>
             <div>
               <div className='flex pb-6'>
-                {(item["itunes:image"] || item["media:thumbnail"]) && <img width={150} height={150} src={item["itunes:image"]?.href || item["media:thumbnail"].url} alt={item.title} className="pr-5"/>}
+                <div>
+                  {(item["itunes:image"] || item["media:thumbnail"] || item["media:content"] || item.imageurl) && <img width={150} src={item["itunes:image"]?.href || item["media:thumbnail"]?.url || item["media:content"]?.url || item.imageurl} alt={item.title} className="pr-5 max-w-none"/>}
+                </div>
                 <div dangerouslySetInnerHTML={{__html:
-                  sanitizeHtml(item.description, {
+                  sanitizeHtml(item["content:encoded"] || item.description || "", {
                     allowedTags: ['b', 'i', 'em', 'strong', 'a', 'img', 'svg'],
                     allowedAttributes: {
                       a: ['href', 'target'],
@@ -36,7 +42,7 @@ const Feed = (props: IProps) => {
                     allowedSchemes: [ 'http', 'https', 'data' ],
                     selfClosing: [ 'img' ]
                   })
-                }}></div>
+                }} className="mt-6 Feed-Content"></div>
               </div>
               {item.enclosure && <audio controls src={item.enclosure.url}  className="w-full"/>}
             </div>

@@ -1,44 +1,37 @@
+
 // react component for home
 import React, { useEffect } from "react";
 import {parse} from "fast-xml-parser";
 import Feed from "./Feed";
+import { Link } from "react-router-dom";
 
 interface IProps {
-  addFeed: (feed: any) => void;
+  onClick: () => void;
+  loggedIn: boolean;
 }
 
 const Home = (props: IProps) => {
-  const [url, setUrl] = React.useState('');
-  const [feed, setFeed] = React.useState<any>([]);
-
-  useEffect(() => {
-    if (url) {
-      fetch(url)
-        .then(res => res.text())
-        .then(async (text)=> {
-          var result1 = parse(text, {
-            ignoreAttributes: false,
-            attributeNamePrefix: "",
-            parseAttributeValue: true,
-            parseNodeValue: true
-          });
-          setFeed(result1);
-        });
-    }
-  }, [url]);
   return (
-    <div className="App-Header">
-      <div className="p-6">
-        <input src='url' onChange={(e) => setUrl(e.target.value)} className="flex mb-8 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded sm:text-sm border-black border-solid border-2"/>
-        <a target="_blank" href={url}><h6 className="text-3xl font-bold underline">{url}</h6></a>
+    <div className="App-header mt-20 mx-auto">
+      <div>
+        <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4">Lukso RSS Feed Reader Dapp</h1>
+        <div className="text-base text-black">This is an RSS reader that stores its feed data via ERC725Y on the lukso chain.</div>
+        {
+          props.loggedIn 
+          ? <span className="text-base bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Add a new RSS feed stored on chain.</span>
+          : <span className="text-base bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Click connect to log in</span>
+        }
       </div>
-      <button onClick={() => props.addFeed(url)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Add Feed
-      </button>
-      <h1 className="text-3xl mb-6">Preview</h1>
-      {feed && <Feed feed={feed.rss} />}
+      <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center mt-3">
+        {
+          props.loggedIn 
+          ?  <Link to={"/add"} className="px-8 py-3 text-white bg-blue-600 hover:bg-gray-600 rounded-full cursor-pointer mr-5 no-underline">Add Feed</Link>
+          :  <a onClick={props.onClick} className="px-8 py-3 text-white bg-blue-600 hover:bg-gray-600 rounded-full cursor-pointer mr-5 no-underline">Connect</a>
+        }
+        <a target="_blank" href="https://github.com" className="px-8 py-3 text-white bg-gray-900 hover:bg-gray-600 rounded-full cursor-pointer no-underline">Learn More</a>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Home;

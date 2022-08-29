@@ -18,10 +18,18 @@ export interface IItem {
   enclosure: {
     url: string;
   };
-  "itunes:image": {
+  imageurl?: string;
+  "content:encoded"?: string;
+  "media:content"?: {
+    url: string;
+    height?: number;
+    width?: number;
+    medium?: "image";
+  };
+  "itunes:image"?: {
     href: string;
   };
-  "media:thumbnail": {
+  "media:thumbnail"?: {
     url: string;
   };
 }

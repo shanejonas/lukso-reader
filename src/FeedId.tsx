@@ -14,8 +14,7 @@ const FeedId = (props: IProps) => {
   const feed: IFeed = props.feeds[decodeURI(params.feedId)];
 
   return (
-    <div className="App-Header">
-      <h1 className="text-3xl mb-6">Feed</h1>
+    <div className="App-Header w-full mx-auto max-w-screen-xl">
       {feed && <Feed feed={feed} />}
     </div>
   )
