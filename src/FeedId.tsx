@@ -1,6 +1,4 @@
 // react component for home
-import React, { useEffect } from "react";
-import {parse} from "fast-xml-parser";
 import Feed from "./Feed";
 import { useParams } from "react-router-dom";
 import { IFeed, IFeedMapping } from "./FeedTypes";

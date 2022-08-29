@@ -1,8 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 
 // react component for home
-import React, { useEffect } from "react";
-import {parse} from "fast-xml-parser";
-import Feed from "./Feed";
 import { Link } from "react-router-dom";
 
 interface IProps {
@@ -28,7 +26,7 @@ const Home = (props: IProps) => {
           ?  <Link to={"/add"} className="px-8 py-3 text-white bg-blue-600 hover:bg-gray-600 rounded-full cursor-pointer mr-5 no-underline">Add Feed</Link>
           :  <a onClick={props.onClick} className="px-8 py-3 text-white bg-blue-600 hover:bg-gray-600 rounded-full cursor-pointer mr-5 no-underline">Connect</a>
         }
-        <a target="_blank" href="https://github.com" className="px-8 py-3 text-white bg-gray-900 hover:bg-gray-600 rounded-full cursor-pointer no-underline">Learn More</a>
+        <a target="_blank" href="https://github.com" className="px-8 py-3 text-white bg-gray-900 hover:bg-gray-600 rounded-full cursor-pointer no-underline" rel="noreferrer">Learn More</a>
       </div>
     </div>
   );

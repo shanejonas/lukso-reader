@@ -14,14 +14,14 @@ const Feed = (props: IProps) => {
   return (
     <div className="Feed mx-auto">
       <div className="shadow sm:rounded-md sm:overflow-hidden p-6 m-10">
-        <a target="_blank" href={props.feed.channel.link}><h1 className="text-3xl mb-6">{he.unescape(props.feed.channel.title)}</h1></a>
+        <a target="_blank" href={props.feed.channel.link} rel="noreferrer"><h1 className="text-3xl mb-6">{he.unescape(props.feed.channel.title)}</h1></a>
         <p className='text-xs'>{props.feed.channel.description}</p>
       </div>
       <ul className="list-none mx-auto">
         {props.feed.channel.item.map((item: IItem) => (
           <li key={item.link} className="justify-between items-center border-b-2 border-gray-100  px-4 sm:px-6 pt-6 pb-6 mx-auto">
             <div >
-              <a target="_blank" href={item.link}><h3 className="text-2xl">{he.unescape(item.title)}</h3></a>
+              <a target="_blank" href={item.link} rel="noreferrer"><h3 className="text-2xl">{he.unescape(item.title)}</h3></a>
             </div>
             <div className="text-base">
               {new Date(item.pubDate).toLocaleDateString()}

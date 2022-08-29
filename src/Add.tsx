@@ -1,7 +1,6 @@
 // react component for home
 import React, { useEffect } from "react";
 import {parse} from "fast-xml-parser";
-import Feed from "./Feed";
 import PreviewFeed from "./PreviewFeed";
 
 interface IProps {

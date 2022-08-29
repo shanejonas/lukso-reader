@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import './App.css';
 import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import { Fragment, useEffect, useState } from 'react';
@@ -267,7 +269,7 @@ function App() {
         {userProfile &&
           <div className="mt-6 w-64 mx-auto absolute bottom-0">
             <img src={userProfile?.value.LSP3Profile.profileImage[0] && userProfile?.value.LSP3Profile.profileImage[0].url.replace("ipfs://", IPFS_GATEWAY)} className="rounded-full w-16 mb-3 mx-auto"/>
-            <div className='text-base text-teal-500 font-semibold text-2xl tracking-wide text-center'>{userProfile?.value.LSP3Profile.name}</div>
+            <div className='text-teal-500 font-semibold text-2xl tracking-wide text-center'>{userProfile?.value.LSP3Profile.name}</div>
             <div className='text-base text-gray-500 mt-2.5 text-center'>{userProfile?.value.LSP3Profile.description}</div>
             {loggedIn &&
                 <a onClick={logout} className="no-underline flex cursor-pointer items-center p-2 text-base font-normal text-right text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
