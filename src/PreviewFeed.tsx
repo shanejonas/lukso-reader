@@ -15,7 +15,7 @@ const PreviewFeed = (props: IProps) => {
   return (
     <div >
       <div className="shadow sm:rounded-md sm:overflow-hidden p-6 ml-10 mr-10">
-        <a target="_blank" href={props.feed.channel.link}><h1 className="text-3xl mb-6">{he.unescape(props.feed.channel.title)}</h1></a>
+        <a target="_blank" href={props.feed.channel.link} rel="noreferrer"><h1 className="text-3xl mb-6">{he.unescape(props.feed.channel.title)}</h1></a>
         <p className='text-xs'>{props.feed.channel.description}</p>
       </div>
       <ul className="list-none flex flex-wrap pl-6 pr-6 ml-10 mr-10 mx-auto justify-center">
