@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import './App.css';
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
+import { Link, NavigateFunction, Route, Routes, useNavigate } from 'react-router-dom';
 import { Fragment, useEffect, useState } from 'react';
 import FeedId from './FeedId';
 import { parse } from 'fast-xml-parser';
@@ -89,10 +89,11 @@ export async function fetchProfile(address: string) {
 }
 
 function App() {
-  let navigate = useNavigate();
+  let navigate : NavigateFunction = useNavigate();
   const [feeds, setFeeds] = useState<IFeedMapping>({});
   const [isModalOpen, setModalIsOpen] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false);
+  console.log('loggedIn', loggedIn);
   const [account, setAccount] = useState<string | undefined>();
   const [profileData, setProfileData] = useState<any>();
   const handleConnect = async () => {

@@ -24,6 +24,7 @@
     "src"
   ],
   "exclude": [
-    "config/"
+    "config/",
+    "node_modules"
   ]
 }
