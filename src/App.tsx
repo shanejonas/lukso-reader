@@ -94,7 +94,6 @@ function App() {
   const [feeds, setFeeds] = useState<IFeedMapping>({});
   const [isModalOpen, setModalIsOpen] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false);
-  console.log('loggedIn', loggedIn);
   const [account, setAccount] = useState<string | undefined>();
   const [profileData, setProfileData] = useState<any>();
   const handleConnect = async () => {
@@ -120,9 +119,6 @@ function App() {
     if (!account) {
       throw new Error('Not logged in');
     }
-    // remove feed from profile
-
-    // remove feed from state
     const newFeeds = {...feeds};
     delete newFeeds[feedUrl];
     if (Object.keys(newFeeds).length !== 0) {
@@ -242,7 +238,7 @@ function App() {
                 <span className="flex-1 ml-3 whitespace-nowrap px-2">Feeds</span>
                 <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">{Object.keys(feeds).length}</span>
               </div>
-              <ul id="dropdown-example" className="py-2 space-y-2">
+              <ul id="dropdown" className="py-2 space-y-2">
                 {Object.keys(feeds).map((feedUrl: string) => {
                   return (
                     <li className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 justify-between">
