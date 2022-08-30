@@ -1,4 +1,28 @@
-# Getting Started with Create React App
+# Lukso Reader
+
+This is an RSS reader that stores its feed data via ERC725Y on the Lukso chain.
+
+It also uses Lukso Universal Profile (and Extension) to log in and interact with the dapp.
+
+The idea is to bring together the power of Lukso, ERC725Y and RSS feeds to make a simple, decentralized, and clean RSS reader.
+
+It is a decentralized application on the Lukso chain.
+
+Features:
+  - [x] Landing Page
+  - [x] Add Feeds
+  - [x] Remove Feeds
+  - [x] View Feeds
+  - [ ] View Individal Feed Items
+  - [ ] Mark Feed Items as Read
+  - [ ] Mark Feed Items as Unread
+  - [ ] Mark Feed Items as Starred
+  - [ ] Mark Feed Items as Unstarred
+  - [ ] Mark Feed Items as Archived
+  - [ ] Mark Feed Items as Unarchived
+
+
+# Contributor Documentation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
