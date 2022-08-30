@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import './App.css';
-import { Link, NavigateFunction, Route, Routes, useNavigate } from 'react-router-dom';
+import { NavigateFunction, Route, Routes, useNavigate } from 'react-router-dom';
 import { Fragment, useEffect, useState } from 'react';
 import FeedId from './FeedId';
 import { parse } from 'fast-xml-parser';
@@ -17,6 +17,7 @@ import Logo from './Logo';
 import Add from './Add';
 import Home from './Home';
 import Profile from './Profile';
+import NavigationLink from './NavigationLink';
 
 const RPC_ENDPOINT = 'https://rpc.l16.lukso.network';
 const IPFS_GATEWAY = 'https://2eff.lukso.dev/ipfs/';
@@ -218,35 +219,36 @@ function App() {
       <aside className="w-72 sticky py-4 px-3 bg-gray-50 rounded dark:bg-gray-800 h-screen top-0" aria-label="Sidebar">
         <ul className="space-y-2 w-64">
           <li className="flex items-center p-2 align-middle text-base text-gray-900 rounded-lg dark:text-white tracking-tighter">
-            <Link className="no-underline inline align-middle" to={"/"}>
-              <Logo /> <span className="absolute top-6 ml-2">Lukso Reader</span>
-            </Link>
+            <NavigationLink className={"no-underline inline align-middle"} to={"/"}>
+              <Logo /> 
+              <span className="absolute text-xl font-semibold top-6 ml-2">Lukso Reader</span>
+            </NavigationLink>
           </li>
           <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
             </svg>
-            <Link className="ml-3 no-underline" to={"/"}>Home</Link>
+            <NavigationLink className="ml-3 no-underline px-2" to={"/"} activeClassName="rounded-lg bg-gray-600">Home</NavigationLink>
           </li>
           <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <Link className="ml-3 no-underline" to={"/add"}>Add Feed</Link>
+            <NavigationLink className="ml-3 no-underline px-2" to={"/add"}  activeClassName="rounded-lg bg-gray-600">Add Feed</NavigationLink>
           </li>
           <li>
               <div className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg  duration-75 group dark:text-white" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                 <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path><path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path></svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Feeds</span>
+                <span className="flex-1 ml-3 whitespace-nowrap px-2">Feeds</span>
                 <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">{Object.keys(feeds).length}</span>
               </div>
               <ul id="dropdown-example" className="py-2 space-y-2">
                 {Object.keys(feeds).map((feedUrl: string) => {
                   return (
                     <li className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 justify-between">
-                      <Link to={`/feed/${encodeURIComponent(feedUrl)}`} className="mr-5">
+                      <NavigationLink to={`/feed/${encodeURIComponent(feedUrl)}`} className="mr-5 px-2" activeClassName="rounded-lg bg-gray-600">
                         {he.unescape(feeds[feedUrl].channel.title)}
-                      </Link>
+                      </NavigationLink>
                       <a className='hover:bg-red-700 hover:rounded-sm cursor-pointer' onClick={() => removeFeed(feedUrl)}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 text-right">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
