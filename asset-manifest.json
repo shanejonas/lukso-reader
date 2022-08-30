@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/lukso-reader/static/css/main.262225d8.css",
-    "main.js": "/lukso-reader/static/js/main.4c1262a7.js",
+    "main.js": "/lukso-reader/static/js/main.11294ef2.js",
     "index.html": "/lukso-reader/index.html",
     "static/media/index.cjs": "/lukso-reader/static/media/index.cd351d7c31d0d3fccf96.cjs",
     "main.262225d8.css.map": "/lukso-reader/static/css/main.262225d8.css.map",
-    "main.4c1262a7.js.map": "/lukso-reader/static/js/main.4c1262a7.js.map"
+    "main.11294ef2.js.map": "/lukso-reader/static/js/main.11294ef2.js.map"
   },
   "entrypoints": [
     "static/css/main.262225d8.css",
-    "static/js/main.4c1262a7.js"
+    "static/js/main.11294ef2.js"
   ]
 }
