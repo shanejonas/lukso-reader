@@ -13,6 +13,7 @@ Features:
   - [x] Add Feeds
   - [x] Remove Feeds
   - [x] View Feeds
+  - [x] Example Feeds
   - [ ] View Individal Feed Items
   - [ ] Mark Feed Items as Read
   - [ ] Mark Feed Items as Unread
