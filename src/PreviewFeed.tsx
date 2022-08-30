@@ -12,6 +12,9 @@ const PreviewFeed = (props: IProps) => {
     return <div className='text-center'>No Feed Loaded...</div>;
   }
   console.log(props.feed);
+  if (!Array.isArray(props.feed.channel.item)) {
+    props.feed.channel.item = [props.feed.channel.item];
+  }
   return (
     <div >
       <div className="shadow sm:rounded-md sm:overflow-hidden p-6 ml-10 mr-10">
@@ -19,7 +22,7 @@ const PreviewFeed = (props: IProps) => {
         <p className='text-xs'>{props.feed.channel.description}</p>
       </div>
       <ul className="list-none flex flex-wrap pl-6 pr-6 ml-10 mr-10 mx-auto justify-center">
-        {props.feed.channel.item.map((item: IItem) => (
+        {props.feed.channel?.item?.map((item: IItem) => (
           <li key={item.link} className="justify-between items-center border-b-2 border-gray-100  px-4 sm:px-6 pt-6 pb-6 pl-6 pr-6 ml-6 mr-6 mt-6 shadow sm:rounded-md max-w-xs">
             <div>
               <h3 className="text-2xl pb-6">{he.unescape(item.title)}</h3>

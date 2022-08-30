@@ -11,6 +11,9 @@ const Feed = (props: IProps) => {
   if (!props.feed) {
     return <div className='text-center'>No Feed Loaded...</div>;
   }
+  if (!Array.isArray(props.feed.channel.item)) {
+    props.feed.channel.item = [props.feed.channel.item];
+  }
   return (
     <div className="Feed mx-auto">
       <div className="shadow sm:rounded-md sm:overflow-hidden p-6 m-10">
@@ -24,7 +27,7 @@ const Feed = (props: IProps) => {
               <a target="_blank" href={item.link} rel="noreferrer"><h3 className="text-2xl">{he.unescape(item.title)}</h3></a>
             </div>
             <div className="text-base">
-              {new Date(item.pubDate).toLocaleDateString()}
+              {item.pubDate && new Date(item.pubDate).toLocaleDateString()}
             </div>
             <div>
               <div className='flex pb-6'>
