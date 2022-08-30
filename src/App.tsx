@@ -219,7 +219,7 @@ function App() {
         <ul className="space-y-2 w-64">
           <li className="flex items-center p-2 align-middle text-base text-gray-900 rounded-lg dark:text-white tracking-tighter">
             <Link className="no-underline inline align-middle" to={"/"}>
-              <Logo /> <span className="absolute top-6 ml-2">Feed Reader</span>
+              <Logo /> <span className="absolute top-6 ml-2">Lukso Reader</span>
             </Link>
           </li>
           <li className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -267,11 +267,15 @@ function App() {
           }
         
         </ul>
-        {userProfile &&
+        {loggedIn &&
           <div className="mt-6 w-64 mx-auto absolute bottom-0">
-            <img src={userProfile?.value.LSP3Profile.profileImage[0] && userProfile?.value.LSP3Profile.profileImage[0].url.replace("ipfs://", IPFS_GATEWAY)} className="rounded-full w-16 mb-3 mx-auto"/>
-            <div className='text-teal-500 font-semibold text-2xl tracking-wide text-center'>{userProfile?.value.LSP3Profile.name}</div>
-            <div className='text-base text-gray-500 mt-2.5 text-center'>{userProfile?.value.LSP3Profile.description}</div>
+            {userProfile &&
+            <>
+              <img src={userProfile?.value.LSP3Profile.profileImage[0] && userProfile?.value.LSP3Profile.profileImage[0].url.replace("ipfs://", IPFS_GATEWAY)} className="rounded-full w-16 mb-3 mx-auto"/>
+              <div className='text-teal-500 font-semibold text-2xl tracking-wide text-center'>{userProfile?.value.LSP3Profile.name}</div>
+              <div className='text-base text-gray-500 mt-2.5 text-center'>{userProfile?.value.LSP3Profile.description}</div>
+            </>
+            }
             {loggedIn &&
                 <a onClick={logout} className="no-underline flex cursor-pointer items-center p-2 text-base font-normal text-right text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                   <span className="flex-1 ml-3 whitespace-nowrap">Logout</span>
