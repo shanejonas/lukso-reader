@@ -33,7 +33,7 @@ const Home = (props: IProps) => {
         </div>
         <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center mt-20 relative">
           <img width="720" src={process.env.PUBLIC_URL + '/feedreader_screenshot.png'} alt="feedreader screenshot"/>
-          <a target="_blank" href="x" className="absolute -bottom-6 px-8 py-3 text-white bg-gray-900 hover:bg-gray-600 rounded-full cursor-pointer no-underline" rel="noreferrer">Watch the Video</a>
+          <a target="_blank" href="https://www.youtube.com/watch?v=HgEaQPckY3o" className="absolute -bottom-6 px-8 py-3 text-white bg-gray-900 hover:bg-gray-600 rounded-full cursor-pointer no-underline" rel="noreferrer">Watch the Video</a>
         </div>
         <div className="text-base text-center max-w-xs mx-auto sm:max-w-none mt-20">
           <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter text-center">Tech used</h1>
