@@ -282,7 +282,7 @@ function App() {
           </div>
         }
       </aside>
-      <div className="flex container">
+      <div className="flex  w-full">
         {!loggedIn &&
           <Home onClick={handleConnect} loggedIn={loggedIn}/>
         }
