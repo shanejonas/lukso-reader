@@ -1,5 +1,7 @@
 # Lukso Reader
 
+Deployed here: https://shanejonas.github.io/lukso-reader/
+
 This is an RSS reader that stores its feed data via ERC725Y on the Lukso chain.
 
 It also uses Lukso Universal Profile (and Extension) to log in and interact with the dapp.
